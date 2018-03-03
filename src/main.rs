@@ -70,6 +70,7 @@ fn m(password_database: String) -> Result<()> {
         .hexdigest().to_uppercase();
     debug!("password hash: {}", password_hash);
 
+    println!("Searching...");
     let p = ProgressBar::new((typed_hashes.len() as f64).log2() as u64); // we're doing binary search here, so O(log2 N)
     let res =
         typed_hashes.binary_search_by_key(&password_hash.as_bytes(), |x| {
