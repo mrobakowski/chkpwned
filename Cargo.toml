@@ -2,6 +2,7 @@
 name = "chkpwned"
 version = "0.1.0"
 authors = ["mrobakowski <mikolaj.rob@gmail.com>"]
+license = "MIT"
 
 [dependencies]
 quicli = "0.2"
