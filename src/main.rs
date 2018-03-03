@@ -15,7 +15,6 @@ use rpassword::prompt_password_stdout;
 use memmap::Mmap;
 use indicatif::ProgressBar;
 
-// Add cool slogan for your app here, e.g.:
 /// Find if your password was compromised
 #[derive(Debug, StructOpt)]
 struct Cli {
