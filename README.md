@@ -13,7 +13,7 @@ $ cargo build --release # produces chkpwned[.exe] in target/release
 $ ./target/release/chkpasswd path/to/haveIBeenPwned/database/file.txt
 enter password to check> ******
 Searching...
-██████████████████████████████████████████████████████████████████ 29/28
+██████████████████████████████████████████████████████████████████ 29/29
 The password you entered was found 11063 times in various leaks
 
 $ ./target/release/chkpasswd path/to/haveIBeenPwned/database/file.txt
