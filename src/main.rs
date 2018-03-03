@@ -66,13 +66,14 @@ fn m(password_database: String) -> Result<()> {
     assert_eq!(&typed_hashes[0].hash as &[u8], &mmapped_file[0..40]);
 
     debug!("first few hash lines: {:#?}", &typed_hashes[0..5]);
+    debug!("num hashes: {}", typed_hashes.len());
 
     let password_hash = Sha1::from(prompt_password_stdout("enter password to check> ")?)
         .hexdigest().to_uppercase();
     debug!("password hash: {}", password_hash);
 
     println!("Searching...");
-    let p = ProgressBar::new((typed_hashes.len() as f64).log2() as u64); // we're doing binary search here, so O(log2 N)
+    let p = ProgressBar::new((typed_hashes.len() as f64).log2().ceil() as u64); // we're doing binary search here, so O(log2 N)
     let res =
         typed_hashes.binary_search_by_key(&password_hash.as_bytes(), |x| {
             p.inc(1);
