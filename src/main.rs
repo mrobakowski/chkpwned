@@ -19,7 +19,8 @@ use indicatif::ProgressBar;
 /// Find if your password was compromised
 #[derive(Debug, StructOpt)]
 struct Cli {
-    /// The text file from https://haveibeenpwned.com/Passwords to use as the password database
+    /// The text file from https://haveibeenpwned.com/Passwords (must be the sorted one) to use as
+    /// the password database
     file: String,
     /// Pass many times for more log output
     #[structopt(long = "verbose", short = "v", parse(from_occurrences))]
