@@ -76,7 +76,7 @@ fn real_main(password_database: String) -> Result<()> {
     let res =
         typed_hashes.binary_search_by_key(&password_hash.as_bytes(), |x| {
             p.inc(1);
-            (&x.hash) as &[u8]
+            &x.hash
         });
     p.finish();
 
