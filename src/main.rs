@@ -27,7 +27,7 @@ struct Cli {
 }
 
 main!(|args: Cli, log_level: verbosity| {
-    m(args.file)?;
+    real_main(args.file)?;
 });
 
 // This is how one line of the haveIBeenPwned database file looks like
@@ -57,7 +57,7 @@ fn hash_lines(s: &[u8]) -> &[HashLine] {
     unsafe { std::slice::from_raw_parts(ptr, len) }
 }
 
-fn m(password_database: String) -> Result<()> {
+fn real_main(password_database: String) -> Result<()> {
     let f = File::open(password_database)?;
     let mmapped_file = unsafe { Mmap::map(&f) }?;
     let typed_hashes = hash_lines(&mmapped_file);
