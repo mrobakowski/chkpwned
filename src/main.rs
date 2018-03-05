@@ -73,11 +73,10 @@ fn real_main(password_database: String) -> Result<()> {
 
     println!("Searching...");
     let p = ProgressBar::new((typed_hashes.len() as f64).log2().ceil() as u64); // we're doing binary search here, so O(log2 N)
-    let res =
-        typed_hashes.binary_search_by_key(&password_hash.as_bytes(), |x| {
-            p.inc(1);
-            &x.hash
-        });
+    let res = typed_hashes.binary_search_by_key(&password_hash.as_bytes(), |x| {
+        p.inc(1);
+        &x.hash
+    });
     p.finish();
 
     if let Ok(idx) = res {
